@@ -1,0 +1,1021 @@
+{
+	"info": {
+		"_postman_id": "30fdf3fe-c9a6-4029-86a7-f0c866453f8e",
+		"name": "Stack Calculator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23673357"
+	},
+	"item": [
+		{
+			"name": "Stack Size 0 Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(200)\r",
+							"    pm.response.to.have.jsonBody(\"result\")\r",
+							"    pm.expect(pm.response.json().result).to.equal(0)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8496/stack/size",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"size"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add 2 Arguments Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(200)\r",
+							"    pm.response.to.have.jsonBody(\"result\")\r",
+							"    pm.expect(pm.response.json().result).to.equal(2)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"arguments\": [3, 4]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8496/stack/arguments",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"arguments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add 2 Arguments Fail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(409)\r",
+							"    pm.response.to.have.jsonBody(\"error-message\")\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"arguments\": [\"test\", 4]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8496/stack/arguments",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"arguments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add 2 Arguments Fail 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(409)\r",
+							"    pm.response.to.have.jsonBody(\"error-message\")\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"arguments\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8496/stack/arguments",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"arguments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Plus Operation Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(200)\r",
+							"    pm.response.to.have.jsonBody(\"result\")\r",
+							"    pm.expect(pm.response.json().result).to.equal(7)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8496/stack/operate?operation=plus",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"operate"
+					],
+					"query": [
+						{
+							"key": "operation",
+							"value": "plus"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Plus Operation Fail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(409)\r",
+							"    pm.response.to.have.jsonBody(\"error-message\")\r",
+							"    pm.expect(pm.response.json()[\"error-message\"]).to.equal(\"Error: cannot implement operation plus. It requires 2 arguments and the stack has only 0 arguments\")\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8496/stack/operate?operation=plus",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"operate"
+					],
+					"query": [
+						{
+							"key": "operation",
+							"value": "plus"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add 2 Arguments Success 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(200)\r",
+							"    pm.response.to.have.jsonBody(\"result\")\r",
+							"    pm.expect(pm.response.json().result).to.equal(2)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"arguments\": [3, 4]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8496/stack/arguments",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"arguments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove 1 Argument Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(200)\r",
+							"    pm.response.to.have.jsonBody(\"result\")\r",
+							"    pm.expect(pm.response.json().result).to.equal(1)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8496/stack/arguments?count=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"arguments"
+					],
+					"query": [
+						{
+							"key": "count",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove 3 Arguments Fail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(409)\r",
+							"    pm.response.to.have.jsonBody(\"error-message\")\r",
+							"    pm.expect(pm.response.json()[\"error-message\"]).to.equal(\"Error: cannot remove 3 from the stack. It has only 1 arguments\")\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8496/stack/arguments?count=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"arguments"
+					],
+					"query": [
+						{
+							"key": "count",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fact Operation Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(200)\r",
+							"    pm.response.to.have.jsonBody(\"result\")\r",
+							"    pm.expect(pm.response.json().result).to.equal(6)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8496/stack/operate?operation=fact",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"operate"
+					],
+					"query": [
+						{
+							"key": "operation",
+							"value": "fact"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stack Size 0 Success 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(200)\r",
+							"    pm.response.to.have.jsonBody(\"result\")\r",
+							"    pm.expect(pm.response.json().result).to.equal(0)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8496/stack/size",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"size"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add 2 Arguments Success 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(200)\r",
+							"    pm.response.to.have.jsonBody(\"result\")\r",
+							"    pm.expect(pm.response.json().result).to.equal(2)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"arguments\": [3, 2]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8496/stack/arguments",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"arguments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pow Operation Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(200)\r",
+							"    pm.response.to.have.jsonBody(\"result\")\r",
+							"    pm.expect(pm.response.json().result).to.equal(8)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8496/stack/operate?operation=pow",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"operate"
+					],
+					"query": [
+						{
+							"key": "operation",
+							"value": "pow"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add 5 Arguments Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(200)\r",
+							"    pm.response.to.have.jsonBody(\"result\")\r",
+							"    pm.expect(pm.response.json().result).to.equal(5)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"arguments\": [-5, 5, 8, 2, 3]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8496/stack/arguments",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"arguments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Minus Operation Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(200)\r",
+							"    pm.response.to.have.jsonBody(\"result\")\r",
+							"    pm.expect(pm.response.json().result).to.equal(1)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8496/stack/operate?operation=minus",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"operate"
+					],
+					"query": [
+						{
+							"key": "operation",
+							"value": "minus"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stack Size 3 Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(200)\r",
+							"    pm.response.to.have.jsonBody(\"result\")\r",
+							"    pm.expect(pm.response.json().result).to.equal(3)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8496/stack/size",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"size"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Times Operation Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(200)\r",
+							"    pm.response.to.have.jsonBody(\"result\")\r",
+							"    pm.expect(pm.response.json().result).to.equal(40)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8496/stack/operate?operation=times",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"operate"
+					],
+					"query": [
+						{
+							"key": "operation",
+							"value": "times"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stack Size 1 Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(200)\r",
+							"    pm.response.to.have.jsonBody(\"result\")\r",
+							"    pm.expect(pm.response.json().result).to.equal(1)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8496/stack/size",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"size"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Abs Operation Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(200)\r",
+							"    pm.response.to.have.jsonBody(\"result\")\r",
+							"    pm.expect(pm.response.json().result).to.equal(5)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8496/stack/operate?operation=abs",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"operate"
+					],
+					"query": [
+						{
+							"key": "operation",
+							"value": "abs"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stack Size 0 Success 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(200)\r",
+							"    pm.response.to.have.jsonBody(\"result\")\r",
+							"    pm.expect(pm.response.json().result).to.equal(0)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8496/stack/size",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"size"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add 2 Arguments Success 4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(200)\r",
+							"    pm.response.to.have.jsonBody(\"result\")\r",
+							"    pm.expect(pm.response.json().result).to.equal(2)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"arguments\": [3, 0]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8496/stack/arguments",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"arguments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Divide Operation Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(200)\r",
+							"    pm.response.to.have.jsonBody(\"result\")\r",
+							"    pm.expect(pm.response.json().result).to.equal(0)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8496/stack/operate?operation=divide",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"operate"
+					],
+					"query": [
+						{
+							"key": "operation",
+							"value": "divide"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add 2 Arguments Success 5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(200)\r",
+							"    pm.response.to.have.jsonBody(\"result\")\r",
+							"    pm.expect(pm.response.json().result).to.equal(2)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"arguments\": [0, 3]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8496/stack/arguments",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"arguments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Divide Operation Fail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(409)\r",
+							"    pm.response.to.have.jsonBody(\"error-message\")\r",
+							"    pm.expect(pm.response.json()[\"error-message\"]).to.equal(\"Error while performing operation Divide: division by 0\")\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8496/stack/operate?operation=divide",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"operate"
+					],
+					"query": [
+						{
+							"key": "operation",
+							"value": "divide"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stack Size 0 Success 4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Correct Result\", function () {\r",
+							"    console.log(\"This is a test \" + pm.response.text());\r",
+							"    pm.response.to.have.status(200)\r",
+							"    pm.response.to.have.jsonBody(\"result\")\r",
+							"    pm.expect(pm.response.json().result).to.equal(0)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8496/stack/size",
+					"host": [
+						"localhost"
+					],
+					"port": "8496",
+					"path": [
+						"stack",
+						"size"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
